@@ -19,8 +19,9 @@ if [ "$1" = "true" ]; then
     git clang-format --diff --style="$2" --extensions="$3" -v "${BASE_REF}"
     if [ $? -eq 0 ]; then
         echo "All files are formatted correctly."
+        exit 0
     fi
-    exit 0
+    exit 1
 fi
 
 # if check and format
