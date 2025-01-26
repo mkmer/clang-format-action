@@ -16,7 +16,7 @@ clang-format --version
 
 if [ "$1" = "true" ]; then
     echo "Checking formatting..."
-    git clang-format -wError --dry-run --diff --style="$2" --extensions="$3" -v "${BASE_REF}"
+     git clang-format --diff --style="$2" --extensions="$3" -v "${BASE_REF}"
     if [ $? -eq 0 ]; then
         echo "All files are formatted correctly."
         exit 0
