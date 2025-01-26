@@ -1,8 +1,8 @@
 # Clang formatter action
 
-![GitHub release](https://img.shields.io/github/v/release/jayllyz/clang-format-action?sort=semver&logo=github)
-[![GitHub Repo stars](https://img.shields.io/github/stars/jayllyz/clang-format-action?logo=github&style=flat)](https://github.com/jayllyz/clang-format-action)
-![GitHub last commit](https://img.shields.io/github/last-commit/jayllyz/clang-format-action?logo=github)
+![GitHub release](https://img.shields.io/github/v/release/mkmer/clang-format-action?sort=semver&logo=github)
+[![GitHub Repo stars](https://img.shields.io/github/stars/mkmer/clang-format-action?logo=github&style=flat)](https://github.com/mkmer/clang-format-action)
+![GitHub last commit](https://img.shields.io/github/last-commit/mkmer/clang-format-action?logo=github)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square&logo=github&style=flat)
 [![CI](https://github.com/Jayllyz/clang-format-action/actions/workflows/ci.yml/badge.svg)](https://github.com/Jayllyz/clang-format-action/actions/workflows/ci.yml)
 
@@ -19,13 +19,8 @@ Example workflow:
 ---
 name: "Clang format"
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
+
 jobs:
   format:
     runs-on: ubuntu-latest
@@ -35,20 +30,13 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 2
 
-      - uses: jayllyz/clang-format-action@v1
+      - uses: mkmer/clang-format-action@v1
         # Default options
         with:
           check: false
           style: file
           extensions: cpp,h,hpp,c
           clang-version: latest
-
-      # commit the changes (if there are any)
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore(style): clang format files"
-          branch: ${{ github.head_ref }}
 ...
 ```
 
@@ -67,13 +55,13 @@ You can read more about the options here : [clang style docs](https://clang.llvm
 ## Action Badge
 
 ```md
-[![clang-format](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE_NAME>/badge.svg)](https://github.com/Jayllyz/clang-format-action)
+[![clang-format](https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/<WORKFLOW_FILE_NAME>/badge.svg)](https://github.com/mkmer/clang-format-action)
 ```
 
 ## Credits
 
-- [stefanzweifel/git-auto-commit-action](https://github.com/stefanzweifel/git-auto-commit-action)
 - [actions/checkout](https://github.com/actions/checkout)
+- [jayllyz/clang-format-action](https://github.com/jayllyz/clang-format-action)
 - [hcpsilva/clang-format-action](https://github.com/hcpsilva/clang-format-action)
 - [Mavrikant/clang-format-action](https://github.com/Mavrikant/clang-format-action)
 
